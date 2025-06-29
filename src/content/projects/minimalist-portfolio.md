@@ -14,7 +14,7 @@ featured: true
 
 # Ultra-Minimal Portfolio
 
-A single-page, distraction-free portfolio that surfaces only the essentials—your name, roles, key links, and latest posts—without any extra fluff.
+A single-page, distraction-free portfolio that surfaces only the essentials—Lokesh, roles, key links, and latest posts—without any extra fluff.
 
 ## Features
 
