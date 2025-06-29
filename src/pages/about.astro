@@ -5,87 +5,52 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout title="About - Your Name" description="Learn more about my background, skills, and experience">
   <section class="section">
     <div class="container">
+      <h1>About</h1>
+      
       <div class="about-content">
-        <div class="about-text">
-          <h1>About Me</h1>
-          <p class="lead">
-            I'm a passionate developer with a love for creating beautiful, functional, and user-friendly digital experiences.
-          </p>
-          
-          <p>
-            With over X years of experience in web development, I specialize in modern JavaScript frameworks, 
-            responsive design, and creating scalable applications. I believe in writing clean, maintainable code 
-            and staying up-to-date with the latest industry trends and best practices.
-          </p>
+        <p class="intro">
+          I'm a developer focused on creating thoughtful digital experiences through clean code and intentional design.
+        </p>
+        
+        <p>
+          With several years of experience in web development, I work primarily with modern JavaScript frameworks 
+          and enjoy the process of turning ideas into functional, accessible applications.
+        </p>
 
-          <p>
-            When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, 
-            or sharing my knowledge through blog posts and community involvement.
-          </p>
+        <p>
+          I believe in the power of simplicity and strive to write code that is both maintainable and performant. 
+          When not coding, I spend time learning new technologies and contributing to open-source projects.
+        </p>
 
-          <h2>Skills & Technologies</h2>
+        <div class="skills-section">
+          <h2>Skills</h2>
           <div class="skills-grid">
-            <div class="skill-category">
+            <div class="skill-group">
               <h3>Frontend</h3>
-              <ul>
-                <li>React / Next.js</li>
-                <li>Vue.js / Nuxt.js</li>
-                <li>TypeScript</li>
-                <li>Tailwind CSS</li>
-                <li>Astro</li>
-              </ul>
+              <p>React, Vue.js, TypeScript, Astro, CSS</p>
             </div>
             
-            <div class="skill-category">
+            <div class="skill-group">
               <h3>Backend</h3>
-              <ul>
-                <li>Node.js</li>
-                <li>Python</li>
-                <li>PostgreSQL</li>
-                <li>MongoDB</li>
-                <li>GraphQL</li>
-              </ul>
+              <p>Node.js, Python, PostgreSQL, GraphQL</p>
             </div>
             
-            <div class="skill-category">
-              <h3>Tools & Others</h3>
-              <ul>
-                <li>Git / GitHub</li>
-                <li>Docker</li>
-                <li>AWS / Vercel</li>
-                <li>Figma</li>
-                <li>VS Code</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="cta-section">
-            <h2>Let's Work Together</h2>
-            <p>
-              I'm always interested in new opportunities and collaborations. 
-              Whether you have a project in mind or just want to chat about technology, feel free to reach out!
-            </p>
-            <div class="contact-buttons">
-              <a href="mailto:your.email@example.com" class="btn">Get In Touch</a>
-              <a href="/resume.pdf" target="_blank" class="btn btn-outline">Download Resume</a>
+            <div class="skill-group">
+              <h3>Tools</h3>
+              <p>Git, Docker, AWS, Figma, VS Code</p>
             </div>
           </div>
         </div>
 
-        <div class="about-sidebar">
-          <div class="profile-card">
-            <div class="profile-image">
-              <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Your Name" />
-            </div>
-            <h3>Your Name</h3>
-            <p class="title">Full Stack Developer</p>
-            <p class="location">📍 Your City, Country</p>
-            
-            <div class="social-links">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
-            </div>
+        <div class="contact-section">
+          <h2>Contact</h2>
+          <p>
+            <a href="mailto:your.email@example.com" class="contact-link">your.email@example.com</a>
+          </p>
+          <div class="social-links">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="link">GitHub</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="link">LinkedIn</a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="link">Twitter</a>
           </div>
         </div>
       </div>
@@ -95,182 +60,75 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <style>
   .about-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 64px;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 600px;
   }
 
-  .about-text h1 {
-    font-size: 48px;
-    margin-bottom: 32px;
+  .intro {
+    font-size: 20px;
     color: #1a1a1a;
+    margin-bottom: 40px;
+    font-weight: 300;
   }
 
-  .lead {
-    font-size: 24px;
-    color: #374151;
-    margin-bottom: 32px;
-    font-weight: 400;
-  }
-
-  .about-text p {
-    font-size: 18px;
-    line-height: 1.7;
-    margin-bottom: 24px;
-    color: #6b7280;
-  }
-
-  .about-text h2 {
-    margin-top: 48px;
-    margin-bottom: 32px;
-    color: #1a1a1a;
+  .skills-section {
+    margin-top: 80px;
   }
 
   .skills-grid {
+    margin-top: 32px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 32px;
-    margin-bottom: 48px;
   }
 
-  .skill-category h3 {
-    color: #3b82f6;
-    margin-bottom: 16px;
-    font-size: 20px;
-  }
-
-  .skill-category ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .skill-category li {
-    padding: 8px 0;
-    color: #6b7280;
+  .skill-group h3 {
     font-size: 16px;
-    border-bottom: 1px solid #f3f4f6;
-  }
-
-  .skill-category li:last-child {
-    border-bottom: none;
-  }
-
-  .cta-section {
-    background: #f9fafb;
-    padding: 48px;
-    border-radius: 12px;
-    text-align: center;
-    margin-top: 48px;
-  }
-
-  .cta-section h2 {
-    margin-bottom: 16px;
-    color: #1a1a1a;
-  }
-
-  .cta-section p {
-    margin-bottom: 32px;
-    color: #6b7280;
-  }
-
-  .contact-buttons {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-  }
-
-  .profile-card {
-    background: white;
-    border-radius: 16px;
-    padding: 32px;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    position: sticky;
-    top: 100px;
-  }
-
-  .profile-image {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 24px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 4px solid #f3f4f6;
-  }
-
-  .profile-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .profile-card h3 {
+    font-weight: 400;
     margin-bottom: 8px;
     color: #1a1a1a;
   }
 
-  .profile-card .title {
-    color: #3b82f6;
-    font-weight: 500;
-    margin-bottom: 4px;
+  .skill-group p {
+    color: #666;
+    margin: 0;
+    font-size: 14px;
   }
 
-  .profile-card .location {
-    color: #6b7280;
-    margin-bottom: 24px;
+  .contact-section {
+    margin-top: 80px;
   }
 
-  .profile-card .social-links {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .profile-card .social-links a {
-    color: #6b7280;
+  .contact-link {
+    color: #1a1a1a;
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
+    font-weight: 300;
   }
 
-  .profile-card .social-links a:hover {
-    color: #3b82f6;
+  .contact-link:hover {
+    text-decoration: underline;
   }
 
-  @media (max-width: 1024px) {
-    .about-content {
-      grid-template-columns: 1fr;
-      gap: 48px;
-    }
+  .social-links {
+    display: flex;
+    gap: 24px;
+    margin-top: 24px;
+  }
 
-    .profile-card {
-      position: static;
-    }
+  .link {
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 300;
+    transition: color 0.2s ease;
+  }
+
+  .link:hover {
+    color: #1a1a1a;
   }
 
   @media (max-width: 768px) {
-    .about-text h1 {
-      font-size: 36px;
-    }
-
-    .lead {
-      font-size: 20px;
-    }
-
-    .skills-grid {
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-
-    .cta-section {
-      padding: 32px 24px;
-    }
-
-    .contact-buttons {
-      flex-direction: column;
-      align-items: center;
+    .skills-section,
+    .contact-section {
+      margin-top: 60px;
     }
   }
 </style>

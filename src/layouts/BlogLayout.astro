@@ -18,19 +18,10 @@ const { frontmatter } = Astro.props;
   <article class="article">
     <div class="container">
       <header class="article-header">
-        <h1 class="article-title">{frontmatter.title}</h1>
-        <div class="article-meta">
-          <time datetime={frontmatter.publishDate.toISOString()}>
-            {formatDate(frontmatter.publishDate)}
-          </time>
-          {frontmatter.tags && (
-            <div class="tags">
-              {frontmatter.tags.map(tag => (
-                <span class="tag">#{tag}</span>
-              ))}
-            </div>
-          )}
-        </div>
+        <h1>{frontmatter.title}</h1>
+        <time class="article-date">
+          {formatDate(frontmatter.publishDate)}
+        </time>
       </header>
       
       <div class="prose">
@@ -42,105 +33,87 @@ const { frontmatter } = Astro.props;
 
 <style>
   .article {
-    padding: 80px 0;
+    padding: 120px 0;
   }
 
   .article-header {
-    text-align: center;
     margin-bottom: 64px;
   }
 
-  .article-title {
-    font-size: 48px;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 24px;
+  .article-header h1 {
+    font-size: 40px;
+    font-weight: 300;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
   }
 
-  .article-meta {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
-    color: #6b7280;
-    font-size: 16px;
-  }
-
-  .tags {
-    display: flex;
-    gap: 8px;
-  }
-
-  .tag {
-    background: #f3f4f6;
-    color: #6b7280;
-    padding: 4px 12px;
-    border-radius: 6px;
+  .article-date {
+    color: #999;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 300;
   }
 
   .prose {
-    max-width: 768px;
-    margin: 0 auto;
-    font-size: 18px;
-    line-height: 1.8;
+    max-width: 680px;
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 300;
   }
 
   .prose h2, .prose h3, .prose h4 {
-    margin-top: 40px;
+    margin-top: 48px;
     margin-bottom: 16px;
     color: #1a1a1a;
+    font-weight: 400;
   }
 
   .prose h2 {
-    font-size: 32px;
-    border-bottom: 2px solid #f3f4f6;
-    padding-bottom: 8px;
+    font-size: 24px;
   }
 
   .prose h3 {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .prose p {
     margin-bottom: 24px;
-    color: #374151;
+    color: #333;
   }
 
   .prose ul, .prose ol {
     margin-bottom: 24px;
-    padding-left: 24px;
+    padding-left: 20px;
   }
 
   .prose li {
     margin-bottom: 8px;
-    color: #374151;
+    color: #333;
   }
 
   .prose blockquote {
-    border-left: 4px solid #3b82f6;
+    border-left: 2px solid #e0e0e0;
     padding-left: 24px;
     margin: 32px 0;
     font-style: italic;
-    color: #6b7280;
+    color: #666;
   }
 
   .prose code {
-    background: #f3f4f6;
+    background: #f5f5f5;
     padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 16px;
-    color: #d1315d;
+    font-size: 14px;
+    color: #666;
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
   }
 
   .prose pre {
-    background: #1f2937;
-    color: #f9fafb;
+    background: #f8f8f8;
+    color: #333;
     padding: 24px;
-    border-radius: 8px;
     overflow-x: auto;
     margin: 32px 0;
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .prose pre code {
@@ -150,13 +123,8 @@ const { frontmatter } = Astro.props;
   }
 
   @media (max-width: 768px) {
-    .article-title {
-      font-size: 36px;
-    }
-
-    .article-meta {
-      flex-direction: column;
-      gap: 16px;
+    .article-header h1 {
+      font-size: 32px;
     }
 
     .prose {
@@ -164,11 +132,11 @@ const { frontmatter } = Astro.props;
     }
 
     .prose h2 {
-      font-size: 28px;
+      font-size: 20px;
     }
 
     .prose h3 {
-      font-size: 20px;
+      font-size: 18px;
     }
   }
 </style>
