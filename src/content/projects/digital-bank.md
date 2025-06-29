@@ -13,7 +13,7 @@ technologies:
   - Spring Security
 githubUrl: "https://github.com/Lokie-codes/digital-bank-v1"
 liveUrl: ""
-featured: false
+featured: true
 ---
 
 # Digital Bank V1

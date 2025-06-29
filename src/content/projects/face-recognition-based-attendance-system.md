@@ -14,7 +14,7 @@ technologies:
   - Docker (optional)
 githubUrl: "https://github.com/Lokie-codes/Face-Recognition-Django-REST-API"
 liveUrl: ""
-featured: false
+featured: true
 ---
 
 # Face Recognition Django REST API

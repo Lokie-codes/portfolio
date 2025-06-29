@@ -9,7 +9,7 @@ technologies:
   - Vercel
 githubUrl: "https://github.com/Lokie-codes/lokesh-s-portfolio"
 liveUrl: "https://lok-x.vercel.app"
-featured: false
+featured: true
 ---
 
 # Ultra-Minimal Portfolio
