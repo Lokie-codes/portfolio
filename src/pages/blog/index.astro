@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { formatDate } from '../../utils/formatDate';
+
+const posts = await getCollection('blog', ({ data }) => {
+  return data.draft !== true;
+});
+
+const sortedPosts = posts.sort((a, b) => 
+  new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
+);
+---
+
+<BaseLayout title="Blog - Your Name" description="Read my thoughts on web development, technology, and more">
+  <section class="section">
+    <div class="container">
+      <div class="page-header">
+        <h1>Blog</h1>
+        <p>Thoughts, tutorials, and insights about web development, technology, and the ever-evolving digital landscape.</p>
+      </div>
+      
+      <div class="blog-grid">
+        {sortedPosts.map(post => (
+          <article class="blog-card">
+            <div class="blog-content">
+              <h2>
+                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+              </h2>
+              <p class="blog-description">{post.data.description}</p>
+              
+              <div class="blog-meta">
+                <time datetime={post.data.publishDate.toISOString()}>
+                  {formatDate(post.data.publishDate)}
+                </time>
+                {post.data.tags && (
+                  <div class="tags">
+                    {post.data.tags.slice(0, 3).map(tag => (
+                      <span class="tag">#{tag}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+              
+              <a href={`/blog/${post.slug}`} class="read-more">
+                Read more →
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .page-header h1 {
+    font-size: 48px;
+    margin-bottom: 16px;
+    color: #1a1a1a;
+  }
+
+  .page-header p {
+    font-size: 20px;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .blog-grid {
+    display: grid;
+    gap: 32px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .blog-card {
+    background: white;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #f3f4f6;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  .blog-content h2 {
+    margin-bottom: 16px;
+  }
+
+  .blog-content h2 a {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  .blog-content h2 a:hover {
+    color: #3b82f6;
+  }
+
+  .blog-description {
+    color: #6b7280;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .blog-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  .blog-meta time {
+    color: #6b7280;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+  }
+
+  .tag {
+    background: #f3f4f6;
+    color: #6b7280;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .read-more {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+
+  .read-more:hover {
+    color: #2563eb;
+  }
+
+  @media (max-width: 768px) {
+    .page-header h1 {
+      font-size: 36px;
+    }
+
+    .page-header p {
+      font-size: 18px;
+    }
+
+    .blog-card {
+      padding: 24px;
+    }
+
+    .blog-content h2 a {
+      font-size: 24px;
+    }
+
+    .blog-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+  }
+</style>
