@@ -20,10 +20,17 @@ const sortedPosts = latestPosts.sort((a, b) =>
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <h1>Your Name</h1>
+        <h1 class="hero-title">
+          Hi, I'm <span class="gradient-text">Your Name</span>
+        </h1>
         <p class="hero-description">
-          Developer creating digital experiences with focus on simplicity and functionality.
+          A passionate developer creating beautiful and functional digital experiences. 
+          I specialize in modern web technologies and love building products that make a difference.
         </p>
+        <div class="hero-actions">
+          <a href="/projects" class="btn">View My Work</a>
+          <a href="/about" class="btn btn-outline">About Me</a>
+        </div>
       </div>
     </div>
   </section>
@@ -31,53 +38,64 @@ const sortedPosts = latestPosts.sort((a, b) =>
   <!-- Featured Projects -->
   <section class="section">
     <div class="container">
-      <h2>Selected Work</h2>
-      <div class="projects-list">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="grid grid-2">
         {featuredProjects.map(project => (
-          <div class="card project-item">
-            <div class="project-header">
-              <h3>{project.data.title}</h3>
-              <div class="project-links">
-                {project.data.githubUrl && (
-                  <a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="link">
-                    GitHub
-                  </a>
-                )}
-                {project.data.liveUrl && (
-                  <a href={project.data.liveUrl} target="_blank" rel="noopener noreferrer" class="link">
-                    Live
-                  </a>
-                )}
-              </div>
-            </div>
+          <div class="card project-card">
+            <h3>{project.data.title}</h3>
             <p>{project.data.description}</p>
-            <div class="tech-list">
-              {project.data.technologies.join(' • ')}
+            <div class="tech-stack">
+              {project.data.technologies.map(tech => (
+                <span class="tech-tag">{tech}</span>
+              ))}
+            </div>
+            <div class="project-links">
+              {project.data.githubUrl && (
+                <a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                  GitHub
+                </a>
+              )}
+              {project.data.liveUrl && (
+                <a href={project.data.liveUrl} target="_blank" rel="noopener noreferrer" class="btn">
+                  Live Demo
+                </a>
+              )}
             </div>
           </div>
         ))}
+      </div>
+      <div class="text-center" style="margin-top: 48px;">
+        <a href="/projects" class="btn btn-outline">View All Projects</a>
       </div>
     </div>
   </section>
 
   <!-- Latest Blog Posts -->
-  <section class="section">
+  <section class="section bg-gray">
     <div class="container">
-      <h2>Recent Writing</h2>
-      <div class="posts-list">
+      <h2 class="section-title">Latest Articles</h2>
+      <div class="grid grid-3">
         {sortedPosts.map(post => (
-          <div class="card post-item">
-            <div class="post-header">
-              <h3>
-                <a href={`/blog/${post.slug}`} class="post-link">{post.data.title}</a>
-              </h3>
-              <time class="post-date">
-                {new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).format(post.data.publishDate)}
-              </time>
-            </div>
+          <article class="card blog-card">
+            <h3>
+              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+            </h3>
             <p>{post.data.description}</p>
-          </div>
+            <div class="blog-meta">
+              <time>{new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).format(post.data.publishDate)}</time>
+              {post.data.tags && (
+                <div class="tags">
+                  {post.data.tags.slice(0, 2).map(tag => (
+                    <span class="tag">#{tag}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </article>
         ))}
+      </div>
+      <div class="text-center" style="margin-top: 48px;">
+        <a href="/blog" class="btn btn-outline">Read All Articles</a>
       </div>
     </div>
   </section>
@@ -85,112 +103,146 @@ const sortedPosts = latestPosts.sort((a, b) =>
 
 <style>
   .hero {
-    padding: 160px 0 120px;
+    padding: 120px 0 80px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   }
 
   .hero-content {
-    max-width: 600px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
   }
 
-  .hero h1 {
+  .hero-title {
     font-size: 56px;
-    font-weight: 300;
-    margin-bottom: 32px;
-    letter-spacing: -1.5px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #1a1a1a;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .hero-description {
-    font-size: 18px;
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 0;
+    font-size: 20px;
+    color: #6b7280;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .projects-list,
-  .posts-list {
-    margin-top: 48px;
-  }
-
-  .project-item,
-  .post-item {
-    padding: 48px 0;
-  }
-
-  .project-header,
-  .post-header {
+  .hero-actions {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 48px;
+    color: #1a1a1a;
+  }
+
+  .bg-gray {
+    background: #f9fafb;
+  }
+
+  .project-card h3 {
+    color: #1a1a1a;
     margin-bottom: 16px;
   }
 
-  .project-header h3,
-  .post-header h3 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 400;
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 24px 0;
+  }
+
+  .tech-tag {
+    background: #e5e7eb;
+    color: #374151;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
   }
 
   .project-links {
     display: flex;
-    gap: 16px;
+    gap: 12px;
+    margin-top: 24px;
   }
 
-  .link {
-    color: #666;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 300;
-    transition: color 0.2s ease;
-  }
-
-  .link:hover {
-    color: #1a1a1a;
-  }
-
-  .post-link {
+  .blog-card h3 a {
     color: #1a1a1a;
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color 0.3s ease;
   }
 
-  .post-link:hover {
-    color: #666;
+  .blog-card h3 a:hover {
+    color: #3b82f6;
   }
 
-  .post-date {
-    color: #999;
-    font-size: 14px;
-    font-weight: 300;
-    white-space: nowrap;
-  }
-
-  .tech-list {
-    color: #999;
-    font-size: 14px;
-    font-weight: 300;
+  .blog-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #f3f4f6;
+    font-size: 14px;
+    color: #6b7280;
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+  }
+
+  .tag {
+    background: #f3f4f6;
+    color: #6b7280;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+
+  .text-center {
+    text-align: center;
   }
 
   @media (max-width: 768px) {
     .hero {
-      padding: 120px 0 80px;
+      padding: 80px 0 60px;
     }
 
-    .hero h1 {
+    .hero-title {
       font-size: 40px;
     }
 
-    .project-header,
-    .post-header {
+    .hero-description {
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .project-links {
+      flex-direction: column;
+    }
+
+    .blog-meta {
       flex-direction: column;
       align-items: flex-start;
       gap: 8px;
-    }
-
-    .project-item,
-    .post-item {
-      padding: 32px 0;
     }
   }
 </style>
